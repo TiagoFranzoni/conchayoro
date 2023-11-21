@@ -1,0 +1,9 @@
+jobx:
+  runs-on: ubuntu-latest
+  steps:
+    - name: Configurar o Node.js
+      uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+    - name: Verificação da versão do Node
+      run: node --version
