@@ -1,9 +1,7 @@
 jobx:
   runs-on: ubuntu-latest
   steps:
-    - name: Configurar o Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '14'
-    - name: Verificação da versão do Node
+    - name: Setup Node.js environment
+      uses: actions/setup-node@v4.0.0
+    - name: verification of node version
       run: node --version
