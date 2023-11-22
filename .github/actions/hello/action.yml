@@ -1,0 +1,23 @@
+name: 'Hello World'
+description: 'Greet the caller'
+inputs:
+  the-caller:
+    description: 'Who is there'
+    required: true
+    default: 'World'
+outputs:
+  random-number:
+    description: "Random number"
+runs:
+  using: "composite"
+  steps:
+    - id: greet
+      run: echo Hello ${{ inputs.the-caller }}.
+      shell: bash
+    - id: random-number-generator
+      run: echo "RANDOM_ID=$(echo $RANDOM)" >> $GITHUB_ENV
+      shell: bash
+    - id: set-output
+      run: |
+        echo "RANDOM_NUMBER=$RANDOM_ID" >> $GITHUB_ENV
+      shell: bash
