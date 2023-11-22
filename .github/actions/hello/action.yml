@@ -19,7 +19,5 @@ runs:
       shell: bash
     - id: set-output
       run: |
-        RANDOM_NUMBER=$(echo $RANDOM_ID)
-        echo "RANDOM_NUMBER=$RANDOM_NUMBER" >> $GITHUB_ENV
-        echo "::set-output name=random-number::$RANDOM_NUMBER"
+        echo "RANDOM_NUMBER=$RANDOM_ID" >> $GITHUB_ENV
       shell: bash
