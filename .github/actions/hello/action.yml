@@ -15,8 +15,11 @@ runs:
       run: echo Hello ${{ inputs.the-caller }}.
       shell: bash
     - id: random-number-generator
-      run: echo "::set-output name=random-id::$(echo $RANDOM)"
+      run: echo "RANDOM_ID=$(echo $RANDOM)" >> $GITHUB_ENV
       shell: bash
     - id: set-output
-      run: echo "::set-output name=random-number::${{ steps.random-number-generator.outputs.random-id }}"
+      run: |
+        RANDOM_NUMBER=$(echo $RANDOM_ID)
+        echo "RANDOM_NUMBER=$RANDOM_NUMBER" >> $GITHUB_ENV
+        echo "::set-output name=random-number::$RANDOM_NUMBER"
       shell: bash
